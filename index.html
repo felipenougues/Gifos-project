@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gifos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+    <script src="https://kit.fontawesome.com/d5b57560b2.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <header id="headerDark">
+        <div class="border-violet"></div>
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                <img id="logo" class="logo" src="/assets/logo-mobile.svg" alt="logo">
+
+                <nav id="site-nav" class="nav">
+                    <ul class="items">
+                        <li>
+                            <a href="#">
+                                <i id="dark-night" class="site-nav-icon">Modo Nocturno</i>
+                            </a>
+                        </li>
+                        <li class="white-line"></li>
+                        <li id="lista-favoritos" class="lista-favoritos">
+                            <a href="#">
+                                <i class="site-nav-icon">Favoritos</i>
+                            </a>
+                        </li>
+                        <li class="white-line"></li>
+                        <li id="li-mis-gifos" class="li-mis-gifos">
+                            <a href="#">
+                                <i class="site-nav-icon">Mis GIFOS</i>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="crear-gifo">
+                        <img src="/assets/button-crear-gifo.svg" alt="boton-crear">
+                    </div>
+                </nav>
+                <div id="menu-nav" class="menu-nav" onclick="cambiarClase()">
+                    <div class="hamburger"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="title-section" class="title-section">
+            <div id="title-container" class="titulo-uno">
+                <h1>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span></h1>
+            </div>
+        </section>
+        <!--SECCION BUSQUEDA-->
+        <section id="search-section" class="search-section">
+            <div id="search-container" class="search-container">
+                <div id="image-search" class="imagen-medio">
+                    <img src="/assets/ilustra_header.svg" alt="imagenbusqueda">
+                </div>
+                <div id="box-search">
+                    <form id="search-form">
+                        <input id="search-input" class="buscar" type="text" placeholder="Busca GIFOS y más">
+                        <span id="search-icon-container" class="lupa">
+                            <i id="search-icon" class="fas fa-search" aria-hidden="true"></i>
+                            <i id="search-icon-close" class="fas fa-times" aria-hidden="true"></i> 
+                        </span>
+                        <div id="container-sugerencias"></div>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+        <!--SECCION DEL TITULO TRENDING LUEGO DE SECCION BUSQUEDA-->
+        <section id="trending-section" class="container-trending">
+            <div class="titulo-dos">
+                <h2 id="trending-title">Trending:</h2>
+            </div>
+            <div id="paragraph-container" class="parrafo">
+                <p id="paragraph-1">Reactions, Entertainment, Sports, Stickers, Artists</p>
+            </div>
+            <div id="center-border"></div>
+        </section>
+        <!-- RESULTADO DE LA BUSQUEDA-->
+        <section id="busqueda" class="busqueda">
+
+            <div class="title-busqueda-container">
+                <h2 id="title-busqueda"></h2>
+            </div>
+            <div id="container-btn-ver-mas-busqueda"></div>
+        </section>
+        <!--FAVORITOS-->
+        <section id="favoritos" class="disabled-favoritos">
+            <div id="container-title-favoritos" class="container-title-favoritos">
+                <img class="icon-favoritos" src="assets/icon-favoritos.svg" alt="iconofavoritos">
+                <h2 class="title-favoritos">Favoritos</h2>
+            </div>
+            <!--<div id="container-btn-vermas-favoritos" class="container-btn-vermas-favoritos">VER MÁS</div>-->
+            <div id="div-container-fav-vacio" class="div-container-fav-vacio">
+                <div id="div-img-fav-vacio" class="div-img-fav-vacio">
+                    <img class="img-fav-vacio" src="/assets/icon-fav-sin-contenido.svg" alt="imagen">
+                </div>
+                <div id="div-texto-fav-vacio" class="div-texto-fav-vacio">
+                    <p class="texto-fav-vacio">
+                        !Guarda tu primer GIFO en Favoritos para que se muestre aquí!
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!--MIS GIFOS-->
+        <section id="mis-gifos" class="mis-gifos-section disabled-mis-gifos">
+            <img class="mis-gifos-icon" src="/assets/icon-mis-gifos.svg" alt="iconoMisGifos">
+            <div id="container-title-mis-gifos" class="container-title-mis-gifos">
+                <h2 class="title-mis-gifos">MIS GIFOS</h2>
+            </div>
+            <div id="container-mis-gifos" class="container-mis-gifos"></div>
+            <div id="btn-ver-mas-mis-gifos" style="visibility: hidden;">VER MÁS</div>
+            <div id="div-contenedor-misGifos-vacio">
+                <div id="div-img-misGifos-vacio">
+                    <img class="img-mis-gifos-vacio" src="/assets/icon-mis-gifos-sin-contenido.svg">
+                </div>
+                <div id="div-texto-misGifos-vacio">
+                    <p class="texto-mis-gifos-vacio">!Anímate a crear tu primer GIFO!</p>
+                </div>
+            </div>
+        </section>
+        <!--GRABACION DE GIFS-->
+        <section id="grabagrif" style="display: none;"></section>
+        <!--TRENDING-->
+        <section id="gifos-section" class="section-gifos">
+            <div class="titulo-gifos">
+                <h2>Trending GIFOS</h2>
+            </div>
+            <div class="parrafo-gifos">
+                <p>Mira los Últimos <br> GIFOS de nuestra comunidad</p>
+            </div>
+            <div>
+                <div id="gifos-section-container" class="container-gifos">
+                    <img src="https://media.giphy.com/media/gIApUEjd08foyywEhH/giphy.gif" alt="">
+                    <img src="https://media.giphy.com/media/cfuL5gqFDreXxkWQ4o/giphy.gif" alt="">
+                    <img src="https://media.giphy.com/media/f8t7FaLXN9RAcaANFn/giphy.gif" alt="">
+                </div>
+            </div>
+            <div id="flechas" class="container-slider">
+                <div id="flecha-izquierda-container" class="flecha-izquierda-container">
+                    <img id="flecha-izquierda" src="/assets/button-slider-left.svg" alt="flecha-izquierda">
+                    <img id="hover-izq" src="/assets/button-slider-left-hover.svg" alt="hoverIzquierda">
+                </div>
+                <div id="flecha-derecha-container" class="flecha-derecha-container">
+                    <img id="flecha-derecha" src="/assets/Button-Slider-right.svg" alt="flecha-derecha">
+                    <img id="hover-der" src="/assets/Button-Slider-right-hover.svg" alt="hoverDerecha">
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <section class="footer">
+
+            <div class="footer-redes">
+
+                <div>
+                    <h3>Compartir en:</h3>
+                </div>
+                <div class="iconos">
+                    <a target="_blank" href="https://www.facebook.com/">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a target="_blank" href="https://www.twitter.com/">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+
+            </div>
+            <div>
+                <p>&copy; GIFOS 2020 All Rights Reserved.</p>
+            </div>
+        </section>
+    </footer>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/gifosclick.js"></script>
+</body>
+
+</html>
